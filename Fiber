@@ -1,0 +1,11 @@
+'''
+Nick Grade
+CIS 245
+Assignment 3.1
+9/12/2022
+'''
+print("Welcome to the calculation generator for fiber optic cable. ")
+company_name = input("Please type in your company name: ")
+nfeet = float(input("Type in the number of feet: "))
+cost = nfeet * (0.87)
+print("$", cost, " ", company_name)
