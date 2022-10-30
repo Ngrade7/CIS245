@@ -1,0 +1,21 @@
+'''
+Nick Grade
+CIS 245
+Assignment 6.1 (Miles to Km converter)
+10/3/2022
+'''
+
+
+def miles_function():
+  miles = float(input("Please enter the number of miles you have driven: "))
+
+  km_converter = (miles * 1.6)
+  print("You drove ", miles, " Miles or", km_converter, " Kilometers")
+  
+try:
+  miles_function()
+
+    
+except:
+  print("Please type in a number value.")
+  exit()
