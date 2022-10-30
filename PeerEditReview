@@ -1,0 +1,64 @@
+# This is a header for the application
+# You should read this header and insert your name and your date below as part of the peer review
+# This is a typical part of any program
+# Author: <Nick Grade>
+# Creation Date: <10/30/2022>
+# Below is a simple program with 10 issues (some are syntax errors and some are logic errors.  You need to identify the issues and correct them.
+
+
+import random
+import time
+
+def displayIntro():
+	print('''You are in a land full of dragons. In front of you,
+	you see two caves. In one cave, the dragon is friendly
+	and will share his treasure with you. The other dragon
+	is greedy and hungry, and will eat you on sight.''')
+	print()
+
+def chooseCave():
+    cave = ''
+#The line below while loop does not need the quotation marks around the numbers  
+	while cave != '1' and cave != '2':
+		print('Which cave will you go into? (1 or 2)')
+#The line below needs to have an int statement included in the input
+		cave = input()
+#The line below needs to return the correct name from caves to cave
+	return caves
+
+#The line below needs to fix the name within the () to have the correct spelling
+def checkCave(chosenCave):
+	print('You approach the cave...')
+	#sleep for 2 seconds
+	time.sleep(2)
+	print('It is dark and spooky...')
+	#sleep for 2 seconds
+#The line below needs to fix the sleep time number to follow the pattern  
+	time.sleep(3)
+	print('A large dragon jumps out in front of you! He opens his jaws and...')
+	print()
+	#sleep for 2 seconds
+	time.sleep(2)
+#The line below needs to change the parameters for the random.randint to outside of the cave number options
+	friendlyCave = random.randint(1, 2)
+
+#The line below needs to have an int statement connected to the friendlyCave  
+	if chosenCave == str(friendlyCave):
+		print('Gives you his treasure!')
+	else:
+#The line below needs () around the print statement to make it a valid    
+		print 'Gobbles you down in one bite!'
+
+playAgain = 'yes'
+#The line below needs to use == when in a while statement
+while playAgain = 'yes' or playAgain = 'y':
+	displayIntro()
+#The line below needs to have the correct spelling for the chooseCave()
+	caveNumber = choosecave()
+	checkCave(caveNumber)
+    
+	print('Do you want to play again? (yes or no)')
+	playAgain = input()
+	if playAgain == "no":
+#The line below has a typo in the print statement    
+		print("Thanks for planing")
