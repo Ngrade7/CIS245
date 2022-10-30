@@ -1,0 +1,34 @@
+'''
+Nick Grade
+Assignment 7.1 Ticker
+CIS 245
+10/16/2022
+'''
+
+stock_response = input("Please enter a stock symbol: ")
+
+try:
+
+  stocks_dict = {
+    'AAA':12.26,
+    'AAPL':156.36,
+    'TSLA':78.45,
+    'IBM': 30.12,
+    'YOU': 85.47,
+    'NVD': 25.14,
+    'GUM': 18.36,
+    'TRY': 7.25,
+    'BIT': 95.21,
+    'FIBR': 16.20,
+    
+  }
+    
+    
+    
+  z = stocks_dict.get(stock_response, 'Ticker Symbol not found')
+  print(stock_response, " ", z)
+
+except:
+  print("Ticker symbol not found.")
+  
+
