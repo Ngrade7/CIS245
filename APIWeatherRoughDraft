@@ -1,0 +1,104 @@
+'''
+Nick Grade
+Class Project Draft
+CIS 245
+10/29/2022
+
+Create a Python Application which asks the user for their zip code or city.
+Use the zip code or city name in order to obtain weather forecast data from: http://openweathermap.org/
+Display the weather forecast in a readable format to the user.
+Use comments within the application, where appropriate, in order to document what the program is doing.
+Use functions including a main function.
+Allow the user to run the program multiple times.
+Validate whether the user entered valid data. If valid data isn’t presented, notify the user.
+Use the Requests library in order to request data from the webservice.
+Use try blocks when establishing connections to the webservice. You must print a message to the user indicating whether or not the connection was successful.
+'''
+
+#Input JSON & weather API info...
+import json, requests
+#pretty print is useful to seeing data
+from pprint import pprint
+
+base_url = "https://api.openweathermap.org/data/2.5/weather"
+appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+city = ""
+
+url = f"{base_url}?q={city}&units=imperial&APPID={appid}"
+#print(url)
+#print()
+
+response = requests.get(url)
+unformated_data = response.json()
+#print(unformated_data)
+#pprint(unformated_data)
+#print()
+
+#temp = unformated_data['main']['temp']
+#print("The temperature is: ", temp)
+
+
+def print_menu():
+    print('1. Zipcode')
+    print('2. City')
+    print('3. Quit')
+
+
+def main():
+    while True:
+        print_menu()
+        choice = input('Which option would you like to do?: ')
+
+        #Zipcode Input
+        if choice == '1':
+            try:
+                zipInput = int(input("Please enter the Zipcode: "))
+
+                base_url = "https://api.openweathermap.org/data/2.5/weather"
+                appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+                city = zipInput
+
+                url = f"{base_url}?q={city}&units=imperial&APPID={appid}"
+
+                response = requests.get(url)
+                unformated_data = response.json()
+                pprint(unformated_data)
+
+                temp = unformated_data['main']['temp']
+                print("The temperature is ", temp)
+                print()
+            except:
+                print("Something went wrong, try again.")
+
+#City Input
+        elif choice == '2':
+            try:
+                print("example: Bellevue,NE")
+                cityInput = input("Please enter the City: ")
+
+                base_url = "https://api.openweathermap.org/data/2.5/weather"
+                appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+                city = cityInput
+
+                url = f"{base_url}?q={city}&units=imperial&APPID={appid}"
+
+                response = requests.get(url)
+                unformated_data = response.json()
+                pprint(unformated_data)
+
+                temp = unformated_data['main']['temp']
+
+                print("The temperature is ", temp)
+
+            except:
+                print("Please input like the example shows.")
+
+
+#Quit Input
+        elif choice == '3':
+            quit()
+
+        else:
+            print()
+
+main()
