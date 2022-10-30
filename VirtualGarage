@@ -1,0 +1,108 @@
+    '''
+Nick Grade
+CIS 245
+Assignment 8.1 Virtual Garage
+10/23/2022
+'''
+
+
+#parent class which stores with general information
+class vehicle():
+
+  def __init__(self, make, model):
+    self.make = make
+    self.model = model
+
+  def setMake(self):
+    return self.make
+
+  def setModel(self):
+    return self.model
+
+  def displayOptions(self):
+    print("")
+    print(
+      "You successfully created a vehicle and here are the options you entered."
+    )
+    print("The make: ", self.make)
+    print("The make: ", self.model)
+    print("")
+
+
+class car(vehicle):
+
+  def __init__(self, make, model, doors):
+    vehicle.__init(self, make, model)
+    self.setDoors = doors
+
+  def setDoors(self):
+    return self.doors
+
+  def displayOptions(self):
+    print("")
+    print(
+      "You successfully created a vehicle and here are the options you entered."
+    )
+    print("The make: ", self.make)
+    print("The make: ", self.model)
+    print("Doors: ", self.doors)
+
+
+class pickup(vehicle):
+
+  def __init__(self, make, model, bedlength):
+    vehicle.__init__(self, make, model)
+    self.bedlength = bedlength
+
+  def setBedLength(self):
+    return self.bedlength
+
+  def displayOptions(self):
+    print("")
+    print(
+      "You successfully created a vehicle and here are the options you entered."
+    )
+    print("The make: ", self.make)
+    print("The make: ", self.model)
+    print("Bedlength: ", self.bedlength)
+
+
+garage = []
+
+
+#main function for asking user their input
+def main():
+  userDecision = int(input("Input a 1 for car, 2 for pickup, 3 to quit: "))
+
+  #User chose a car vehicle
+  if userDecision == 1:
+
+    make = input("Type in your vehicle make: ")
+    model = input("Type in your vehicle model: ")
+    doors = int(input("How many doors: "))
+    c = car(make, model, doors)
+    garage.append(c)
+
+#User chose a pickup vehicle
+  elif userDecision == 2:
+
+    make = input("Type in your vehicle make: ")
+    model = input("Type in your vehicle model: ")
+    bedlength = int(input("Input your bedlength: "))
+    t = pickup(make, model, bedlength)
+    garage.append(t)
+
+
+#User chose
+  elif userDecision == 3:
+    quit()
+
+  else:
+    main()
+
+main()
+
+for c in garage:
+  print(c.displayOptions)
+
+    
