@@ -1,0 +1,27 @@
+"""
+Nick Grade
+Assignment 10.1
+CIS 245
+11/4/2022
+
+Prompt the user for the file name.
+Prompt the user for their name.
+Prompt the user for their street address.
+Prompt the user for their phone number.
+Write the user name, street address and phone number to a comma-separated line in the file that your user typed in step 1.
+Once the data has been written to the file your program should read the file and display the contents.
+"""
+
+file_name = input("Type in your file name: ")
+user_name = input("Type in your name: ")
+user_address = input("Type in your street address: ")
+phone_number = input("Type in your phone number: ")
+
+with open(file_name, "w") as newFile:
+  newFile.write(user_name)
+  newFile.write(user_address)
+  newFile.write(phone_number)
+
+with open(file_name, "r") as createdFile:
+  openedFile = createdFile.read()
+  print(f"{user_name},{user_address},{phone_number}")
