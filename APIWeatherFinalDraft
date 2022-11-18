@@ -1,0 +1,125 @@
+'''
+Nick Grade
+Class Project Final
+CIS 245
+11/17/2022
+'''
+
+#Input JSON & weather API info
+import json, requests
+#pretty print for seeing data
+from pprint import pprint
+
+base_url = "https://api.openweathermap.org/data/2.5/weather"
+appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+city = ""
+
+
+#print menu for choosing the input option
+def print_menu():
+    print('1. Zipcode')
+    print('2. City')
+    print('3. Quit')
+
+
+#main function for the weather application
+def main():
+    while True:
+        print(
+            "Welcome to the Weather forecast program. In this program you will need to choose an input of a city or zipcode to receive weather data for that city."
+        )
+        print()
+        print_menu()
+        choice = input('Input the number you would like to do: ')
+
+#Zipcode Input
+        if choice == '1':
+            try:
+
+                zipInput = int(input("Please enter the Zipcode: "))
+
+                base_url = "https://api.openweathermap.org/data/2.5/weather"
+                appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+                city = zipInput
+
+                url = f"{base_url}?zip={city}&units=imperial&APPID={appid}"
+
+                response = requests.get(url)
+                unformated_data = response.json()
+                print()
+                print("Successful connection.")
+                print()
+
+                #calling data from unformated weather library
+                cityName = unformated_data['name']
+                temp = unformated_data['main']['temp']
+                highTemp = unformated_data['main']['temp_max']
+                minTemp = unformated_data['main']['temp_min']
+                humidity = unformated_data['main']['humidity']
+                weather = unformated_data['weather'][0]['description']
+
+                #print statements
+                print("You input the zipcode", zipInput,
+                      "which is the city of", cityName)
+                print("The current temperature is", temp, chr(176) + "F")
+                print("The high temperature is", highTemp, chr(176) + "F")
+                print("The low temperature is", minTemp, chr(176) + "F")
+                print("The humidity is", humidity, "%")
+                print("The weather description is", weather)
+                print()
+            except:
+                print("Try again with correct zipcode.")
+                print()
+
+#City Name Input
+        elif choice == '2':
+            try:
+                print()
+                print("example: Omaha,US")
+                cityInput = str(input("Please enter the City: "))
+
+                base_url = "https://api.openweathermap.org/data/2.5/weather"
+                appid = "a453fb3a7c3eb423cf9af4bb9c10103e"
+                city = cityInput
+
+                url = f"{base_url}?q={city}&units=imperial&APPID={appid}"
+
+                response = requests.get(url)
+                unformated_data = response.json()
+                print()
+                print("Successful connection.")
+                print()
+
+                #calling data from unformated weather library
+                temp = unformated_data['main']['temp']
+                highTemp = unformated_data['main']['temp_max']
+                minTemp = unformated_data['main']['temp_min']
+                humidity = unformated_data['main']['humidity']
+                weather = unformated_data['weather'][0]['description']
+
+                #print statements
+                print("You input the city", city)
+                print("The current temperature is", temp, chr(176) + "F")
+                print("The high temperature is", highTemp, chr(176) + "F")
+                print("The low temperature is", minTemp, chr(176) + "F")
+                print("The humidity is", humidity, "%")
+                print("The weather description is", weather)
+                print()
+
+            except:
+                print("Try again. Please input like the example shows.")
+                print()
+
+
+#Quit Input
+        elif choice == '3':
+            quit("Goodbye.")
+
+        else:
+            print()
+            print("************************************************")
+            print("Input a number to continue through the program.")
+            print("************************************************")
+            print()
+
+main()
